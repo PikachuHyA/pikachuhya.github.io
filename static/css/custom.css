@@ -1,0 +1,18 @@
+/* TOC 固定在右侧 */
+article aside.w-30-l {
+  position: sticky;
+  top: 1rem;
+  align-self: flex-start;
+  max-height: calc(100vh - 2rem);
+  overflow-y: auto;
+}
+
+/* TOC 层级缩进 */
+#TableOfContents ul ul {
+  margin-left: 1em;
+  margin-top: 0.25em;
+}
+
+#TableOfContents ul ul ul {
+  margin-left: 1em;
+}

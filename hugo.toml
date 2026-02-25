@@ -2,3 +2,7 @@ baseURL = 'https://example.org/'
 languageCode = 'en-us'
 title = "PikachuHy's Blog"
 theme = 'ananke'
+
+[params]
+  toc = true
+  custom_css = ["/css/custom.css"]

@@ -3,6 +3,7 @@ date = '2025-01-02T17:55:58+08:00'
 draft = false
 title = 'Summary of 2024'
 tags = ['Summary']
+toc = true
 +++
 
 ## Overview

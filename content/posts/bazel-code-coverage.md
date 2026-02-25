@@ -3,6 +3,7 @@ date = '2025-03-11T17:55:26+08:00'
 draft = false
 title = 'C++ Code Coverage with Bazel'
 tags = ['Bazel', 'C++20 Modules']
+toc = true
 +++
 
 Recently, it was reported that C++20 module interface files generate no code coverage data. Upon investigating, I discovered that this is due to an instrumentation file that only accounts for explicitly instrumented files. If a file is not listed, its coverage data is skipped. For more details, refer to [CoverageOutputGenerator--Main.java#L151-L155](https://github.com/bazelbuild/bazel/blob/299e9037108ad539104fdfed39c5e41c9b3288df/tools/test/CoverageOutputGenerator/java/com/google/devtools/coverageoutputgenerator/Main.java#L151-L155).
@@ -233,8 +234,8 @@ $ genhtml app.info -o html
 ```
 
 
-### Bazel Code Coverage
-#### A Simple C++ Case
+## Bazel Code Coverage
+### A Simple C++ Case
 The Bazel documentation on [Code Coverage](https://bazel.build/configure/coverage?hl=en) provides a comprehensive overview. Here, we'll focus on C++ code coverage. 
 
 Consider a minimal project structure:
@@ -283,7 +284,7 @@ void foo() {
 }
 ```
 
-#### GCC with Bazel
+### GCC with Bazel
 
 To generate a coverage report using Bazel, run the following command:
 
@@ -399,7 +400,7 @@ If you encounter any issues, check the log file and run the command with the fol
 ```
 
 
-#### Clang with Bazel
+### Clang with Bazel
 
 To use Bazel with Clang for code coverage, execute the following command:
 
@@ -448,7 +449,7 @@ Parsing file bazel-out/k8-fastbuild/testlogs/_coverage/test/test/_cc_coverage.da
 ```
 In GCC, the processed files take the form of xxx.gcda.gcov.json.gz.
 
-### Under the Hood
+## Under the Hood
 
 When you invoke `bazel coverage xxx`, it enables the `--collect_code_coverage` flag, which allows Bazel to gather coverage data after running tests. Ultimately, this coverage data is merged into `bazel-out/_coverage/_coverage_report.dat`.
 
@@ -612,7 +613,7 @@ JAVA_RUNFILES= exec $LCOV_MERGER_CMD
 
 The merger scans all the coverage data files (`.dat`, `.gcov`, `.gcov.json.gz`, `.profdata`) and filters the data according to the specified `--filter_sources` and `--source_file_manifest`. Only files included in the `--source_file_manifest` will be retained, while those listed in `--filter_sources` will be excluded.
 
-### References
+## References
 - [gcov—a Test Coverage Program](https://gcc.gnu.org/onlinedocs/gcc/Gcov.html)
 - [Clang Source-based Code Coverage](https://clang.llvm.org/docs/SourceBasedCodeCoverage.html)
 - [Code Coverage with Bazel](https://bazel.build/configure/coverage?hl=en)
