@@ -1,4 +1,4 @@
-baseURL = 'https://example.org/'
+baseURL = 'https://pikachuhya.github.io/'
 languageCode = 'en-us'
 title = "PikachuHy's Blog"
 theme = 'ananke'
@@ -6,3 +6,13 @@ theme = 'ananke'
 [params]
   toc = true
   custom_css = ["/css/custom.css"]
+
+[[menus.main]]
+name = 'Posts'
+pageRef = '/posts'
+weight =  20
+
+[[menus.main]]
+name = 'Tags'
+pageRef = '/tags'
+weight = 30
